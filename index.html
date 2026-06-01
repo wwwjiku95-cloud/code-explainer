@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Explainer</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="bg"></div>
+
+  <header>
+    <div class="brand">
+      <span class="brand-icon">&lt;/&gt;</span>
+      <div class="brand-text">
+        <span class="brand-name">CODE</span>
+        <span class="brand-sub">EXPLAINER</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="status-dot"></div>
+      <span class="status-text">AI Ready</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-eyebrow">PASTE CODE → GET EXPLANATION</div>
+      <h1>Understand<br/><em>any code.</em></h1>
+      <p>Paste any code snippet — AI explains it in plain English, line by line or as a whole.</p>
+    </section>
+
+    <!-- CONFIG -->
+    <div class="config-row">
+      <div class="config-card wide">
+        <div class="config-label">GROQ API KEY</div>
+        <div class="input-with-link">
+          <input type="password" id="api-key" placeholder="gsk_••••••••••••••••"/>
+          <a href="https://console.groq.com" target="_blank" class="link-btn">Get free ↗</a>
+        </div>
+      </div>
+      <div class="config-card">
+        <div class="config-label">LANGUAGE</div>
+        <select id="lang">
+          <option value="auto">Auto Detect</option>
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="typescript">TypeScript</option>
+          <option value="java">Java</option>
+          <option value="cpp">C++</option>
+          <option value="rust">Rust</option>
+          <option value="go">Go</option>
+          <option value="sql">SQL</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- MODE SELECTOR -->
+    <div class="mode-row">
+      <div class="mode-label">EXPLANATION MODE</div>
+      <div class="mode-btns">
+        <button class="mode-btn active" data-mode="simple">
+          <span class="mode-icon">🧠</span>
+          <span class="mode-name">Simple</span>
+          <span class="mode-desc">Easy English</span>
+        </button>
+        <button class="mode-btn" data-mode="lineby">
+          <span class="mode-icon">📋</span>
+          <span class="mode-name">Line by Line</span>
+          <span class="mode-desc">Detailed</span>
+        </button>
+        <button class="mode-btn" data-mode="eli5">
+          <span class="mode-icon">👶</span>
+          <span class="mode-name">ELI5</span>
+          <span class="mode-desc">Like I'm 5</span>
+        </button>
+        <button class="mode-btn" data-mode="senior">
+          <span class="mode-icon">🏆</span>
+          <span class="mode-name">Senior Dev</span>
+          <span class="mode-desc">Technical</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- INPUT -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-icon">$_</span>
+          CODE INPUT
+        </div>
+        <div class="panel-actions">
+          <button class="sample-btn" id="sample-btn">Load sample ↓</button>
+          <button class="clear-input-btn" id="clear-input-btn">Clear ✕</button>
+        </div>
+      </div>
+      <textarea id="code-input" spellcheck="false" placeholder="// Paste your code here...
+function example() {
+  // Any language works!
+}"></textarea>
+      <button class="explain-btn" id="explain-btn">
+        <span>Explain This Code</span>
+        <span class="btn-arrow">⟶</span>
+      </button>
+    </div>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading-panel" style="display:none">
+      <div class="loading-track"><div class="loading-bar"></div></div>
+      <div class="loading-text"><span id="loading-msg">Reading your code...</span></div>
+    </div>
+
+    <!-- ERROR -->
+    <div id="error-msg" class="error-panel"></div>
+
+    <!-- OUTPUT -->
+    <div id="output-panel" class="output-panel" style="display:none">
+      <div class="output-header">
+        <div class="output-meta">
+          <span class="out-badge" id="mode-badge">Simple</span>
+          <span class="out-lang" id="lang-badge"></span>
+        </div>
+        <div class="out-actions">
+          <button class="act-btn" id="copy-btn">📋 Copy</button>
+          <button class="act-btn danger" id="clear-btn">✕ Clear</button>
+        </div>
+      </div>
+      <div id="explanation" class="explanation"></div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
